@@ -10,7 +10,8 @@ from jobseek.common.mixins import MappingViewSetMixin, RetrieveModelMixin, Creat
 
 logger = logging.getLogger('jobseek.api.user')
 
-class UserViewSet(MappingViewSetMixin, CreateModelMixin, RetrieveModelMixin, ModelViewSet):
+
+class UserViewSet(MappingViewSetMixin, RetrieveModelMixin, ModelViewSet):
     permission_classes = [AllowAny, ]
     authentication_classes = []
 
@@ -22,7 +23,7 @@ class UserViewSet(MappingViewSetMixin, CreateModelMixin, RetrieveModelMixin, Mod
     def get_queryset(self):
         return UserProfile.objects.all()
 
-    @swagger_auto_schema(responses={200: UserSerializer})
+    @swagger_auto_schema(responses={200: UserProfileSerializer})
     def create(self, request, *args, **kwargs):
         """
         유저 생성 API

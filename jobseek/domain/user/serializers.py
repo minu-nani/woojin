@@ -25,6 +25,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
             'password'
         )
 
+
 class UserProfileCreateSerializer(serializers.ModelSerializer):
     user = UserCreateSerializer()
 
